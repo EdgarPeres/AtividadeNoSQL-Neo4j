@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/global.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/buttonPrimary.css') }}">
+    <title>Detalhes do Usuário</title>
+</head>
+<body>
+<nav class="row_flex">
+    <div class="logo-title-container">
+        <img src="{{ url_for('static', filename='image/logo.png') }}" alt="SocialConnect Logo">
+        <h1>SocialConnect</h1>
+    </div>
+</nav>
+<div class="row-blue">
+    <a href="/" class="btn btn-link">
+        <svg xmlns="http://www.w3.org/2000/svg" width="30" fill="currentColor" class="bi bi-arrow-left svg-white"
+             viewBox="0 0 16 16">
+            <path fill-rule="evenodd"
+                  d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"/>
+        </svg>
+    </a>
+    <h4>Detalhes do Usuário</h4>
+</div>
+
+<div class="container">
+    <!-- Verifica se a variável usuario existe e tem conteúdo -->
+    {% if usuario %}
+    <fieldset>
+        <h2>{{ usuario.nome }}</h2>
+        <p><strong>Idade:</strong> {{ usuario.idade }}</p>
+        <p><strong>Localização:</strong> {{ usuario.localizacao }}</p>
+    </fieldset>
+
+    <!-- Tabela de Amigos -->
+    <h2>Amigos</h2>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Nome</th>
+            <th>Idade</th>
+            <th>Localização</th>
+            <th>Ação</th>
+        </tr>
+        {% for amigo in amigos %}
+        <tr>
+            <td>{{ amigo.id }}</td>
+            <td>{{ amigo.nome }}</td>
+            <td>{{ amigo.idade }}</td>
+            <td>{{ amigo.localizacao }}</td>
+            <td>
+                <form action="{{ url_for('remover_amizade') }}" method="post">
+                    <input type="hidden" name="user_id" value="{{ usuario.id }}">
+                    <input type="hidden" name="friend_id" value="{{ amigo.id }}">
+                    <input class="btn-primary" type="submit" value="Remover">
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <!-- Tabela de Não Amigos -->
+    <h2>Usuários que não são Amigos</h2>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Nome</th>
+            <th>Idade</th>
+            <th>Localização</th>
+            <th>Ação</th>
+        </tr>
+        {% for nao_amigo in nao_amigos %}
+        <tr>
+            <td>{{ nao_amigo.id }}</td>
+            <td>{{ nao_amigo.nome }}</td>
+            <td>{{ nao_amigo.idade }}</td>
+            <td>{{ nao_amigo.localizacao }}</td>
+            <td>
+                <form action="{{ url_for('adicionar_amizade') }}" method="post">
+                    <input type="hidden" name="user_id" value="{{ usuario.id }}">
+                    <input type="hidden" name="friend_id" value="{{ nao_amigo.id }}">
+                    <input class="btn-primary" type="submit" value="Adicionar Amizade">
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+    {% else %}
+    <p>Usuário não encontrado.</p>
+    {% endif %}
+</div>
+</body>
+</html>

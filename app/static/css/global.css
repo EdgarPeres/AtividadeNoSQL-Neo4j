@@ -1,0 +1,119 @@
+/* Reset CSS para remover estilos padrão do navegador */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0px;
+    background-color: #ffff;
+}
+
+h1 {
+    color: #373535;
+}
+
+
+table {
+    width: 80%;
+    border-collapse: collapse;
+    margin: 0px auto;
+}
+
+th, td {
+    border: 1px solid #ccc;
+    text-align: left;
+    padding: 8px;
+}
+
+th {
+    background-color: #1287B1;
+    color: white;
+}
+
+tr:nth-child(even) {
+    background-color: #D3EFFC;
+}
+
+th:nth-child(1), td:nth-child(1) {
+    width: 50px;
+}
+
+th:nth-child(3), td:nth-child(3) {
+    width: 70px;
+}
+
+/* Estilos para containers */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilos para botões de formulário */
+input{
+    margin: 5px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/* Estilos para tabelas */
+table {
+    width: 90%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th, td {
+    border: 1px solid #ccc;
+    text-align: center;
+}
+
+th {
+    background-color: #333;
+    color: #fff;
+}
+
+th:nth-child(1), td:nth-child(3) {
+    width: 40px;
+}
+
+th:nth-child(2), td:nth-child(4){
+    width: 35%;
+}
+
+/* Estilos para formulários */
+form {
+    margin: 10px 0;
+}
+
+img {
+width: 150px;
+}
+
+.row_flex {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   padding: 10px;
+}
+
+.logo-title-container {
+   display: flex;
+   align-items: center;
+}
+
+.row-blue {
+    width: 100%;
+    height: 60px;
+    color: #ffff;
+    margin-bottom: 50px;
+    background: #007bff;
+    display: flex; /* Ativa o modelo flexbox */
+    justify-content: flex-start; /* Centraliza horizontalmente */
+    align-items: center; /* Centraliza verticalmente */
+    gap: 10px;
+}
+.svg-white {
+    fill: #ffffff; /* Define a cor do preenchimento para branco (#ffffff) */
+}
